@@ -4,10 +4,11 @@ import { useQuery } from "react-query";
 import Metrics, { GetPeriod } from "../canisters/Metrics/Metrics";
 import MetricsIDL from "../canisters/Metrics/Metrics.did";
 import { KeysOfUnion } from "../types/utils";
+import { SUBNET_ENDPOINT } from "../../config";
 
 export type Period = KeysOfUnion<GetPeriod>;
 
-const agent = new HttpAgent({ host: "https://ic0.app" });
+const agent = new HttpAgent({ host: SUBNET_ENDPOINT });
 export default function useMetrics({
   canisterId = "bsusq-diaaa-aaaah-qac5q-cai",
   attributeId,

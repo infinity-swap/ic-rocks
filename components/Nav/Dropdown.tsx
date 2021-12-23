@@ -7,6 +7,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { FiMenu } from "react-icons/fi";
 import { agentAtom, authAtom } from "../../state/auth";
 import DarkModeToggle from "./DarkModeToggle";
+import { SUBNET_ENDPOINT } from "../../config";
 
 export default function Dropdown() {
   const [principal, setPrincipal] = useState(null);
@@ -19,7 +20,7 @@ export default function Dropdown() {
   const handleAuthenticated = async (authClient: AuthClient) => {
     const identity: CustomIdentity = authClient.getIdentity();
 
-    const agent = new HttpAgent({ identity, host: "https://ic0.app" });
+    const agent = new HttpAgent({ identity, host: SUBNET_ENDPOINT });
     setAgent(agent);
 
     const principal = await agent.getPrincipal();

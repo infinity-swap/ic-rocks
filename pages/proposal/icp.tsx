@@ -7,6 +7,7 @@ import ProposalNav from "../../components/Proposals/ProposalNav";
 import governanceIdl from "../../lib/canisters/governance.did";
 import nnsUiIdl from "../../lib/canisters/nns-ui.did";
 import useInterval from "../../lib/hooks/useInterval";
+import { SUBNET_ENDPOINT } from "../../config";
 declare const Buffer;
 
 const UpdateIcpXdrConversionRatePayload = (IDL) =>
@@ -16,7 +17,7 @@ const UpdateIcpXdrConversionRatePayload = (IDL) =>
     xdr_permyriad_per_icp: IDL.Nat64,
   });
 
-const agent = new HttpAgent({ host: "https://ic0.app" });
+const agent = new HttpAgent({ host: SUBNET_ENDPOINT });
 const governance = Actor.createActor(governanceIdl, {
   agent,
   canisterId: "rrkah-fqaaa-aaaaa-aaaaq-cai",

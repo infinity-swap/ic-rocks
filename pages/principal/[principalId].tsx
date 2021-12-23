@@ -18,10 +18,11 @@ import fetchJSON from "../../lib/fetch";
 import { getPrincipalType } from "../../lib/identifiers";
 import { APIPrincipal, Canister } from "../../lib/types/API";
 import { PrincipalType } from "../../lib/types/PrincipalType";
+import { SUBNET_ENDPOINT } from "../../config";
 
 const didc = import("didc");
 
-const agent = new HttpAgent({ host: "https://ic0.app" });
+const agent = new HttpAgent({ host: SUBNET_ENDPOINT });
 
 const cbor = require("borc");
 
@@ -144,7 +145,7 @@ const PrincipalPage = ({
       const pathCommon = [blobFromText("canister"), principal];
       const pathModuleHash = pathCommon.concat(blobFromText("module_hash"));
       const pathControllers = pathCommon.concat(blobFromText("controllers"));
-      const agent = new HttpAgent({ host: "https://ic0.app" });
+      const agent = new HttpAgent({ host: SUBNET_ENDPOINT });
       let res;
       try {
         res = await agent.readState(principalId, {
