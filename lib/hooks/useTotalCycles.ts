@@ -5,13 +5,13 @@ import protobuf from "protobufjs";
 import { useQuery } from "react-query";
 import protobufJson from "../canisters/proto.json";
 import { UInt64Value } from "../types/canisters";
-import { SUBNET_ENDPOINT } from "../../config";
+import { SUBNET_ENDPOINT, NNS_CYCLES_MINTING_CANISTER_ID } from "../../config";
 
 const root = protobuf.Root.fromJSON(protobufJson as protobuf.INamespace);
 const agent = new HttpAgent({ host: SUBNET_ENDPOINT });
 const cyclesMinting = Actor.createActor(() => IDL.Service({}), {
   agent,
-  canisterId: "rkp4c-7iaaa-aaaaa-aaaca-cai",
+  canisterId: NNS_CYCLES_MINTING_CANISTER_ID,
 });
 extendProtobuf(cyclesMinting, root.lookupService("CyclesMinting"));
 

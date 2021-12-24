@@ -7,7 +7,7 @@ import ProposalNav from "../../components/Proposals/ProposalNav";
 import governanceIdl from "../../lib/canisters/governance.did";
 import nnsUiIdl from "../../lib/canisters/nns-ui.did";
 import useInterval from "../../lib/hooks/useInterval";
-import { SUBNET_ENDPOINT } from "../../config";
+import { SUBNET_ENDPOINT, GOVERNANCE_CANISTER_ID, NNS_UI_CANISTER_ID } from "../../config";
 declare const Buffer;
 
 const UpdateIcpXdrConversionRatePayload = (IDL) =>
@@ -20,11 +20,11 @@ const UpdateIcpXdrConversionRatePayload = (IDL) =>
 const agent = new HttpAgent({ host: SUBNET_ENDPOINT });
 const governance = Actor.createActor(governanceIdl, {
   agent,
-  canisterId: "rrkah-fqaaa-aaaaa-aaaaq-cai",
+  canisterId: GOVERNANCE_CANISTER_ID,
 });
 const nnsUi = Actor.createActor(nnsUiIdl, {
   agent,
-  canisterId: "qoctq-giaaa-aaaaa-aaaea-cai",
+  canisterId: NNS_UI_CANISTER_ID,
 });
 
 const formatTimestamp = (ts) =>

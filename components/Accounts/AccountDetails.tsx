@@ -17,12 +17,12 @@ import { TaggedLabel } from "../Labels/TaggedLabel";
 import TagModal from "../Modals/TagModal";
 import { NeuronLabel } from "../Neurons/NeuronLabel";
 import { TransactionsTable } from "../TransactionsTable";
-import { SUBNET_ENDPOINT } from "../../config";
+import { SUBNET_ENDPOINT, LEDGER_CANISTER_ID } from "../../config";
 
 const agent = new HttpAgent({ host: SUBNET_ENDPOINT });
 const ledger = Actor.createActor(ledgerIdl, {
   agent,
-  canisterId: "ryjl3-tyaaa-aaaaa-aaaba-cai",
+  canisterId: LEDGER_CANISTER_ID,
 });
 
 const hideLeadingZeros = (str: string) => {

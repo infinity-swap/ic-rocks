@@ -29,9 +29,9 @@ import {
   OutputDisplayButtons,
   QueryButton,
 } from "./CanisterUI/Shared";
+import { CANDID_UI_URL } from "../config";
 
 const root = protobuf.Root.fromJSON(protobufJson as protobuf.INamespace);
-const CANDID_UI_URL = "https://a4gq6-oaaaa-aaaab-qaa4q-cai.raw.ic0.app/";
 
 export type Type = "loading" | "input" | "output" | "error" | "outputDisplay";
 type CanisterMethod = Record<string, IDL.FuncClass | Method>;

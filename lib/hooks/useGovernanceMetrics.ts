@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
 import { FIVE_MINUTES_MS } from "../durations";
+import { GOVERNANCE_METRICS_ENDPOINT } from "../../config";
 
 type Gauge = {
   name: string;
@@ -13,7 +14,7 @@ export default function useGovernanceMetrics() {
     "governance/metrics",
     async () => {
       const res = await fetch(
-        "https://rrkah-fqaaa-aaaaa-aaaaq-cai.raw.ic0.app/metrics"
+        GOVERNANCE_METRICS_ENDPOINT
       );
       const text = await res.text();
       const arr = text.split("\n");
